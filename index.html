@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chris Monahan - Assistant Professor of Physics at Colorado College. Research in lattice QCD and fundamental nuclear physics.">
+    <meta name="keywords" content="physics, lattice QCD, strong force, quarks, Colorado College">
+    <meta name="author" content="Chris Monahan">
+    <title>Chris Monahan | Physics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a3a52;
+            --secondary-color: #2c5282;
+            --accent-color: #d97706;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --text-dark: #1a1a1a;
+            --text-light: #666;
+            --border-color: #dee2e6;
+            --max-width: 900px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #fff;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Main Container */
+        main {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--medium-gray);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .hero p.subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 3rem;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent-color);
+            display: inline-block;
+        }
+
+        /* Highlights Section */
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .highlight-card {
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight-card h3 {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* Research Section */
+        .research-strand {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+
+        .research-strand:hover {
+            border-color: var(--accent-color);
+        }
+
+        .research-strand h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Links Section */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .link-button {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s ease, transform 0.2s ease;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .link-button:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .link-button.external {
+            background: var(--accent-color);
+        }
+
+        .link-button.external:hover {
+            background: #b56d00;
+        }
+
+        /* Affiliations */
+        .affiliations {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .affiliations h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .affiliations ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .affiliations li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .affiliations li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Typography */
+        strong {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        a:hover {
+            border-bottom-color: var(--secondary-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p.subtitle {
+                font-size: 1.1rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Print Friendly */
+        @media print {
+            header, footer {
+                background: none;
+                color: var(--text-dark);
+            }
+
+            a {
+                color: var(--text-dark);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Chris Monahan</div>
+            <ul>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#teaching">Teaching</a></li>
+                <li><a href="#links">Publications</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Chris Monahan</h1>
+            <p class="subtitle">Assistant Professor of Physics</p>
+            <p><strong>Colorado College</strong> | <em>he/him/his</em></p>
+            <p>Welcome to my home page! I am an Assistant Professor in the <a href="https://www.coloradocollege.edu/academics/dept/physics/">Department of Physics</a> at <a href="https://www.coloradocollege.edu/">Colorado College</a>. I use supercomputers to study the strong nuclear force that binds together protons and neutrons at the heart of everything we see around us.</p>
+        </section>
+<!--
+        <section class="highlights">
+            <div class="highlight-card">
+                <h3>Recent Papers</h3>
+                <p>NSF CAREER Award, DOE Early Career Award, P5 Panel member (2023), KITP Scholar (2025), Phi Beta Kappa Award for Advancement of Scholarship (2024)</p>
+            </div>
+            <div class="highlight-card">
+                <h3>🤝 Leadership</h3>
+                <p>Co-founder of <a href="https://mcp.physics.wm.edu/">Mentoring for Career in Physics</a>. Member of the international <a href="http://flag.unibe.ch/2021/">Flavour Lattice Averaging Group</a>.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>💡 Impact</h3>
+                <p>Featured in <a href="https://www.nytimes.com/2023/12/07/science/particle-physics-muon-collider.html">NY Times</a> and <a href="https://news.wm.edu/2022/12/15/p5-charting-the-course-for-the-next-era-of-particle-physics/">William & Mary News</a>. Read the <a href="https://www.usparticlephysics.org/2023-p5-report/">P5 report</a>.</p>
+            </div>
+        </section>
+-->
+
+<section class="highlights">
+            <div class="highlight-card">
+                <h3>Some Recent Papers</h3>
+                <p><it>Accessing the gluon momentum fraction of nucleons through the gradient flow</it>, <a href="https://arxiv.org/abs/2602.14260">arXiv:2602.14260</a></p>
+                <p style="margin-top: 0.5rem;"><it>Window observables for benchmarking parton distribution functions</it>, <a href="https://journals.aps.org/prl/abstract/10.1103/q6jl-816j">PRL 135 (2025) 191901</a></p>
+                <p style="margin-top: 0.5rem;"><it>FLAG Review 2024</it>, <a href="https://journals.aps.org/prd/abstract/10.1103/nfzp-p5dn">PRD 113 (2026) 014508</a></p>
+            </div>
+            <div class="highlight-card">
+                <h3>(More-or-less) Recent Coverage</h3>
+                <p>Undergraduate research at <a href="https://www.coloradocollege.edu/newsevents/newsroom/2026/physics-major-presents-phases-of-magnets-research.html">Colorado College</a>.</p>
+                <p style="margin-top: 1.0rem;"> <a href="https://www.jlab.org/news/stories/widening-windows-peer-proton">Jefferson Lab News</a>.</p>
+                <p style="margin-top: 1.0rem;">The 2023 <a href="https://www.usparticlephysics.org/2023-p5-report/">P5 report</a> was featured in the <a href="https://www.nytimes.com/2023/12/07/science/particle-physics-muon-collider.html">NY Times</a>.</p>
+            </div>
+        </section>
+
+        <!-- About Research -->
+        <section>
+            <h2>About My Research</h2>
+
+            <p>The standard model of particle physics is the mathematical theory that describes our understanding of the fundamental building blocks of the Universe. This theory is spectacularly successful, perhaps the most successful scientific theory of all time, but includes only three of the four known forces of nature (it does not include gravity, which is described by general relativity) and does not explain the origin of dark matter or why neutrinos have mass (a Nobel prize-worthy discovery!). Searching for the answers to these questions requires a precise understanding of the Standard Model, so that we can search for experimental clues to new physics and, perhaps, a more unified theory of the four fundamental forces. This, in turn, requires precise theoretical predictions of the properties of quarks and gluons, which interact via the strong force to form the basic building blocks of protons, neutrons and other hadrons.</p>
+
+            <p style="margin-top: 1.5rem;">Currently, the only method we have for studying the properties of the strong force in a systematic way is lattice quantum chromodynamics (QCD), which allows us to numerically solve the equations governing the strong force using super computers. I study how quarks and gluons come together to form protons and neutrons.<p>
+
+            <p style="margin-top: 1.5rem;"><strong>My research encompasses three main strands:</strong></p>
+
+            <div class="research-strand">
+                <h3>1. Nonperturbative nucleon structure</h3>
+                <p>Understanding the internal structure of protons and neutrons through lattice QCD simulations.</p>
+            </div>
+
+            <div class="research-strand">
+                <h3>2. Heavy quark flavor physics on the lattice</h3>
+                <p>Studying heavy quarks to search for new physics beyond the Standard Model.</p>
+            </div>
+
+            <div class="research-strand">
+                <h3>3. Casimir effects in classical fluids</h3>
+                <p>Exploring quantum effects in macroscopic systems.</p>
+            </div>
+        </section>
+
+        <!-- Affiliations -->
+        <section id="research">
+        <!--
+            <h2>Affiliations & Leadership</h2>
+            <div class="affiliations">
+                <h3>Current Positions</h3>
+                <ul>
+                    <li>Assistant Professor, Department of Physics, Colorado College</li>
+                    <li>KITP Scholar, Kavli Institute for Theoretical Physics</li>
+                    <li>Member, Flavour Lattice Averaging Group (FLAG)</li>
+                    <li>Co-founder, Mentoring for Career in Physics</li>
+                </ul>
+                -->
+
+                <h3 style="margin-top: 1.5rem;">Awards & Recognition</h3>
+                <ul>
+                    <li><strong>2025</strong> KITP Scholar, <a href="https://www.kitp.ucsb.edu/">Kavli Institute for Theoretical Physics</a> </li>
+                    <li><strong>2024</strong> Phi Beta Kappa Award for the Advancement of Scholarship</li>
+                    <li><strong>2023</strong> Member, <a href="https://www.usparticlephysics.org/2023-p5-report/" class="link button external">Particle Physics Project Prioritization Panel</a> (P5)</li>
+                    <li><strong>2022</strong> Department of Energy Early Career Award</li>
+                    <li><strong>2022</strong> National Science Foundation CAREER Award</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Teaching -->
+        <section id="teaching">
+            <h2>Teaching</h2>
+            <p>I am committed to fostering the next generation of physicists and scientists. I develop and teach courses across the physics curriculum. I am particularly passionate about helping students understand physics within its historical and cultural context.</p>
+            <p style="margin-top: 1rem;">For more details on courses and student research opportunities, please visit my <a href="https://www.coloradocollege.edu/">Colorado College faculty page</a>.</p>
+        </section>
+
+        <!-- Publications & Links -->
+        <section id="links">
+            <h2>Publications & Resources</h2>
+            <p style="margin-bottom: 1.5rem;">Find my latest research and preprints on these platforms:</p>
+            <div class="links-grid">
+                <a href="https://arxiv.org/find/all/1/au:+monahan_c/0/1/0/all/0/1" class="link-button external">arXiv</a>
+                <a href="https://inspirehep.net/search?p=exactauthor%3AC.J.Monahan.1&sf=earliestdate" class="link-button external">INSPIRE</a>
+                <a href="http://latticeperturbationtheory.org/" class="link-button external">Lattice PT</a>
+                <a href="https://www.coloradocollege.edu/academics/dept/physics/" class="link-button">Colorado College Physics</a>
+            </div>
+        </section>
+
+        <!-- About Physics -->
+        <!--
+        <section>
+            <h2>Understanding Particle Physics</h2>
+            <p>The <a href="https://en.wikipedia.org/wiki/Standard_Model">Standard Model</a> is perhaps the most successful scientific theory ever developed. However, it is incomplete:</p>
+            <ul style="margin-top: 1rem; margin-left: 1.5rem; color: var(--text-light);">
+                <li><strong>Gravity is missing:</strong> The Standard Model omits gravity, described instead by <a href="https://en.wikipedia.org/wiki/General_relativity">general relativity</a>.</li>
+                <li><strong>Dark matter unexplained:</strong> The theory doesn't account for <a href="https://en.wikipedia.org/wiki/Dark_matter">dark matter</a>, which comprises most of the Universe's mass.</li>
+                <li><strong>Neutrino mass:</strong> The Standard Model fails to explain why neutrinos have mass—a discovery that earned the <a href="http://www.nobelprize.org/">Nobel Prize</a>.</li>
+            </ul>
+            <p style="margin-top: 1.5rem;">Resolving these mysteries requires precise predictions of how quarks and gluons interact via the strong force. This is where my research comes in.</p>
+        </section>
+    </main>
+    -->
+
+    <footer>
+        <p>&copy; 2025 Chris Monahan. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+            <a href="mailto:cmonahan@coloradocollege.edu">cmonahan@coloradocollege.edu</a> | 
+            <a href="https://www.coloradocollege.edu/">Colorado College</a>
+        </p>
+    </footer>
+</body>
+</html>
